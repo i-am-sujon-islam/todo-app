@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "react-hot-toast";
+import Layout from "./components/Layout";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="font-bodyFont text-gray-300">
+        <Layout>
+          {children}
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: "#000000",
+                color: "#ffffff",
+              },
+            }}
+          />
+        </Layout>
+      </body>
     </html>
   );
 }
